@@ -12,39 +12,34 @@ function Square(props) {
   );
 }
 
-class Board extends React.Component {
-  renderSquare(i) {
-    var isAWin;
-    if (this.props.winningSquares) {
-      isAWin = this.props.winningSquares.find((n) => n === i)
-    }
-    return (
-      <Square 
-        className={'square ' + (isAWin > -1? 'win':'')}
-        value={this.props.squares[i]} 
-        onClick={() => this.props.onClick(i)}
-      />
-    );
-  }
+function Squares(props) {
+  const isWinningSquare = (i) => props.winningSquares && props.winningSquares.find((n) => 
+            n == props.column + i) > -1;
 
+  return (
+    <div className="board-row">
+      {props.squares.map((square, i) =>
+        <Square 
+          className={'square '+ (isWinningSquare(i)? 'win ':'')}
+          key={props.column + i}
+          value={props.squares[i]} 
+          onClick={() => props.onClick(props.column + i)}
+        />
+      )}
+    </div>
+  )
+}
+
+class Board extends React.Component {
   render() {
     return (
       <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+        {[0, 3, 6].map((column) =>
+          <Squares key={column}
+                   squares={this.props.squares.slice(column, column + 3)} 
+                   onClick={this.props.onClick} column={column}
+                   winningSquares={this.props.winningSquares}/>
+        )}
       </div>
     );
   }
