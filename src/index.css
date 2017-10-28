@@ -4,7 +4,17 @@ body {
 }
 
 ol, ul {
-  padding-left: 30px;
+  padding-left: 20px;
+  margin: 5px 0;
+}
+
+.game-info {
+  clear: both;
+  margin-top: 12px;
+}
+
+.board-row {
+  width: 100px;
 }
 
 .board-row:after {
@@ -48,15 +58,10 @@ li button {
   width: 125px;
 }
 
+li.selected {
+  margin-left: 2px;
+}
+
 li.selected, li.selected * {
   font-weight: bold;
-}
-
-.game {
-  display: flex;
-  flex-direction: row;
-}
-
-.game-info {
-  margin-left: 20px;
 }
