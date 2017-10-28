@@ -8,9 +8,20 @@ ol, ul {
   margin: 5px 0;
 }
 
+.game {
+  text-align: center;
+  margin: 0 auto;
+}
+
 .game-info {
   clear: both;
-  margin-top: 12px;
+  margin: 12px auto 0;
+  width: 155px;
+}
+
+.game-board {
+  width: 100px;
+  margin: 0 auto;
 }
 
 .board-row {
