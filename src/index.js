@@ -14,7 +14,7 @@ function Square(props) {
 
 function Squares(props) {
   const isWinningSquare = (i) => props.winningSquares && props.winningSquares.find((n) => 
-            n == props.column + i) > -1;
+            n === props.column + i) > -1;
 
   return (
     <div className="board-row">

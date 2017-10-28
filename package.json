@@ -8,6 +8,7 @@
     "react-scripts": "1.0.14"
   },
   "scripts": {
+    "upload": "npm run build && cd build/ && domo publish && cd ..",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
